@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MGGStats</title>
+    
+</head>
+<body>
+    <h1>Stats Simulator</h1>
+    <form id="searchform" method="POST">
+        <input type="text" name="Level" placeholder="Level"><br>
+        <input type="text" name="Specimen" placeholder="Mutant Code"><br>
+        <input type="text" name="Mutant" placeholder="Mutant Name"><br>
+
+        <label for="stars">Select Star Level:</label>
+        <select name="stars" id="stars" style="display: none;">
+            <option value="basic">No Stars</option>
+            <option value="bronze">Bronze</option>
+            <option value="silver">Silver</option>
+            <option value="gold">Gold</option>
+            <option value="platinum">Platinum</option>
+        </select><br><br>
+        <button type="submit">Calculate</button>
+        <button id="new-search-btn" style="display: none;">New Search</button>
+
+    </form>
+
+    <h2>Results:</h2>
+    <div id="results"></div>
+    <div id="speedf"></div>
+    <div id="level"></div>
+    <p id="calculatedLife">Valor de vida calculado: </p>
+    <div id="calculatedatk"></div>   
+
+</body>
+</html>
+<script type="text/javascript" src="model/op.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
