@@ -50,7 +50,7 @@ function searchCSV() {
   calcbstars()
 
   if (!specimen) {
-    alert('Por favor ingrese un código de Specimen.')
+    alert('Insert a valid code for Specimen')
     return
   }
 
@@ -131,7 +131,7 @@ function searchCSV() {
             calcatkp()
             calcspeed()
           } else {
-            resultsDiv.innerHTML = '<p>No se encontró el Specimen.</p>'
+            resultsDiv.innerHTML = '<p>Specimen not found</p>'
           }
         },
         header: false, // No utilizamos la primera fila como encabezado (headers)
@@ -139,7 +139,7 @@ function searchCSV() {
         delimiter: ';', // Establecemos el delimitador como punto y coma
       })
     })
-    .catch((error) => console.error('Error al leer el archivo CSV:', error))
+    .catch((error) => console.error('Error read file CSV:', error))
 }
 
 function resetSearch() {
