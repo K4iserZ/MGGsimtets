@@ -19,8 +19,8 @@ let stats = {
 }
 
 let iconstats = {
-  hp: "../images/icon_hc.png",
-  speed: "../images/icon_speed.png"
+  hp: "../images//icon/icon_hp.png",
+  speed: "../images/icon/icon_speed.png"
 }
 
 let category = {
@@ -176,9 +176,14 @@ function calcspeed() {
   if (extractedData.speed) {
     let speed = parseFloat(extractedData.speed)
     stats.speed = 10 / (speed / 100)
-    console.log('Speed:', stats.speed)
-    document.getElementById('speedf').innerHTML =
-      iconstats.speed + stats.speed.toFixed(2)
+    //console.log('Speed:', stats.speed)
+    let contspeed = `
+      <img src="${iconstats.speed}" alt="Speed Icon" style="width: 30px; height: 30px; margin-right: 10px;">
+      ${stats.speed.toFixed(2)}
+    `;
+
+    // Actualiza el HTML con el contenido generado
+    document.getElementById('speedf').innerHTML = contspeed;
   } else {
     console.log('Not found')
   }
@@ -239,8 +244,12 @@ function calcLife() {
     let life = parseFloat(extractedData.life) // Extrae y convierte el valor de vida
     stats.life = (life * bonusstars * levelF * adjust) / 1000000 // Realiza el cálculo con el valor de vida
     console.log('Life Calculado:', stats.life) // Puedes imprimirlo para ver el resultado en consola
-    document.getElementById('calculatedLife').innerHTML =
-      iconstats.hp + stats.life.toFixed(0)
+
+    let conthp = `
+    <img src="${iconstats.hp}" alt="Hp Icon" style="width: 30px; height: 30px; margin-right: 10px;">
+    ${stats.life.toFixed(0)}
+  `;
+    document.getElementById('calculatedLife').innerHTML = conthp
   } else {
     console.error('No se encontró el valor de vida en extractedData.')
   }
@@ -276,6 +285,6 @@ function calcatkp() {
     document.getElementById('calculatedatk').innerHTML =
       'atk1p: ' + stats.atk1p.toFixed(0) + '&nbsp;' + 'ability: ' + stats.ability + '<br>' + 'atk2p: ' + stats.atk2p.toFixed(0)
   } else {
-    console.error('No se encontraron los valores de atk1p y atk2p en extractedData.')
+    console.error('No data of atk1p or atk2p.')
   }
 }
