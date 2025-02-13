@@ -19,8 +19,9 @@ let stats = {
 }
 
 let iconstats = {
-  hp: "../images//icon/icon_hp.png",
-  speed: "../images/icon/icon_speed.png"
+  hp: "https://raw.githubusercontent.com/K4iserZ/MGGsimtets/refs/heads/main/images/icon/icon_hp.png",
+  //../images/icon/icon_hp.png
+  speed: "https://raw.githubusercontent.com/K4iserZ/MGGsimtets/refs/heads/main/images/icon/icon_speed.png"
 }
 
 let category = {
@@ -270,7 +271,7 @@ function calcatkp() {
 
     let abi = parseFloat(extractedData.ability)
 
-    console.log(value1, value2) // Imprime los valores numéricos obtenidos
+    //console.log(value1, value2) // Imprime los valores numéricos obtenidos
 
     // Realizamos los cálculos con los valores numéricos
     stats.atk1p = (atk1pi * bonusstars * levelF * adjust) / 1000000
