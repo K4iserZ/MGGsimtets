@@ -18,6 +18,11 @@ let stats = {
   ability: 0,
 }
 
+let iconstats = {
+  hp: "../images/icon_hc.png",
+  speed: "../images/icon_speed.png"
+}
+
 let category = {
   LEGEND:
     'https://s-ak.kobojo.com/mutants/assets/mobile/hud/m_m_m/icon_legend.png',
@@ -96,7 +101,7 @@ function searchCSV() {
             // URL de la imagen con la interpolación correcta
             let imagepath = `https://s-ak.kobojo.com/mutants/assets/thumbnails/specimen_${dna}${mainskin}.png`
 
-            console.log('Datos Extraídos:', extractedData) // Ver en consola
+            console.log('Extracted Data:', extractedData) // Ver en consola
 
             // Icono según el tipo del specimen
             iconLink =
@@ -125,7 +130,7 @@ function searchCSV() {
               starsDropdown.value = 'basic'; // Seleccionamos la opción "No Stars" por defecto
             }
 
-            // Llamar a las funciones que calculan la vida, velocidad y nivel
+            // Funciones
             calclevel()
             calcLife()
             calcatkp()
@@ -173,7 +178,7 @@ function calcspeed() {
     stats.speed = 10 / (speed / 100)
     console.log('Speed:', stats.speed)
     document.getElementById('speedf').innerHTML =
-      'Speed: ' + stats.speed.toFixed(2)
+      iconstats.speed + stats.speed.toFixed(2)
   } else {
     console.log('Not found')
   }
@@ -235,7 +240,7 @@ function calcLife() {
     stats.life = (life * bonusstars * levelF * adjust) / 1000000 // Realiza el cálculo con el valor de vida
     console.log('Life Calculado:', stats.life) // Puedes imprimirlo para ver el resultado en consola
     document.getElementById('calculatedLife').innerHTML =
-      'Life: ' + stats.life.toFixed(0)
+      iconstats.hp + stats.life.toFixed(0)
   } else {
     console.error('No se encontró el valor de vida en extractedData.')
   }
