@@ -3,40 +3,6 @@ let adjust = 100
 let typeLink, star, level, levelF
 let bonusstars, mainskin
 
-let stars = {
-  platinum: 100,
-  gold: 75,
-  silver: 30,
-  bronze: 10,
-}
-
-let stats = {
-  life: 0,
-  speed: 0,
-  atk1p: 0,
-  atk2p: 0,
-  ability: 0,
-}
-
-let iconstats = {
-  hp: "https://raw.githubusercontent.com/K4iserZ/MGGsimtets/refs/heads/main/images/icon/icon_hp.png",
-  //../images/icon/icon_hp.png
-  speed: "https://raw.githubusercontent.com/K4iserZ/MGGsimtets/refs/heads/main/images/icon/icon_speed.png"
-}
-
-let category = {
-  LEGEND:
-    'https://s-ak.kobojo.com/mutants/assets/mobile/hud/m_m_m/icon_legend.png',
-  HEROIC:
-    'https://s-ak.kobojo.com/mutants/assets/mobile/hud/m_m_m/icon_heroic.png',
-  RECIPE:
-    'https://s-ak.kobojo.com/mutants/assets/mobile/hud/m_m_m/icon_recipe.png',
-  SEASONAL:
-    'https://s-ak.kobojo.com/mutants/assets/mobile/hud/m_m_m/icon_seasonal.png',
-  CAPTAINPEACE:
-    'https://s-ak.kobojo.com/mutants/assets/mobile/hud/m_m_m/icon_captainpeace.png',
-}
-
 // Evento para ejecutar la búsqueda cuando el formulario se envía
 document
   .getElementById('searchform')
@@ -114,6 +80,7 @@ function searchCSV() {
                 <p><strong>Picture:</strong> <img src="${imagepath}" alt="Specimen Image" /></p>
                 <p><strong>Type:</strong> <img src="${iconLink}" alt="Type Icon" /></p>
                 <p><strong>Name:</strong> ${extractedData.name}</p>
+                <p><strong>Level:</strong> ${level}</p>
               `
 
             // Aquí comenzamos a verificar si el specimen tiene versiones

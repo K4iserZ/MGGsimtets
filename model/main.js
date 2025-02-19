@@ -58,6 +58,7 @@ function searchCSV() {
                 <p><strong>Imagen:</strong> <img src="${imagepath}" alt="Specimen Image" /></p>
                 <p><strong>Tipo:</strong> <img src="${iconLink}" alt="Type Icon" /></p>
                 <p><strong>Name:</strong> ${extractedData.name}</p>
+                <p><strong>Level:</strong> ${level}</p>
                 <p><strong>Speed:</strong> ${extractedData.speed}</p>
                 <p><strong>Life:</strong> ${extractedData.life}</p>
               `;
