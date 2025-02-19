@@ -206,3 +206,50 @@ function calcLife() {
     console.error('No se encontró el valor de vida en extractedData.')
   }
 }
+
+function calcatkp() {
+  let geneValue = extractedData.dna
+
+  for (let i = 0; i < geneValue.length; i++) {
+    const caracter = geneValue[i];  // Extraer el carácter
+
+    // Crear un elemento de imagen
+    const img = document.createElement('img');
+
+    // Establecer la fuente de la imagen usando el objeto gene
+    img.src = gene[caracter];  // Obtener la URL de la imagen desde el objeto gene
+    img.alt = `Imagen de ${caracter}`;
+}
+
+  if (extractedData.atk1p && extractedData.atk2p) {
+    let input1 = extractedData.atk1p
+    let input2 = extractedData.atk2p
+    
+    // Utilizamos split y comprobamos si existe texto después del ":"
+    let value1 = input1.split(':')[0].trim()  // Obtenemos solo el número
+    let value2 = input2.split(':')[0].trim()  // Obtenemos solo el número
+    
+    // Parseamos los valores a float
+    let atk1pi = parseFloat(value1)
+    let atk2pi = parseFloat(value2)
+
+    let abi = parseFloat(extractedData.ability)
+
+    //console.log(value1, value2) // Imprime los valores numéricos obtenidos
+
+    // Realizamos los cálculos con los valores numéricos
+    stats.atk1p = (atk1pi * bonusstars * levelF * adjust) / 1000000
+    stats.atk2p = (atk2pi * bonusstars * levelF * adjust) / 1000000
+
+    stats.ability = (stats.atk1p*(100 + abi)/100).toFixed(0)
+
+    console.log('Atak1p:', stats.atk1p) // Imprime el resultado del cálculo de atk1p
+    console.log('Atak2p:', stats.atk2p) // Imprime el resultado del cálculo de atk2p
+    
+    // Muestra el resultado en el HTML
+    document.getElementById('calculatedatk').innerHTML =
+      'atk1p: ' + stats.atk1p.toFixed(0) + '&nbsp;' + 'ability: ' + stats.ability + '<br>' + 'atk2p: ' + stats.atk2p.toFixed(0)
+  } else {
+    console.error('No data of atk1p or atk2p.')
+  }
+}

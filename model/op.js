@@ -1,7 +1,8 @@
 let extractedData = {} //general key
 let adjust = 100
 let typeLink, star, level, levelF
-let bonusstars, mainskin
+let bonusstars, mainskin, geneValue
+let gene1, gene2
 
 // Evento para ejecutar la búsqueda cuando el formulario se envía
 document
@@ -49,6 +50,7 @@ function searchCSV() {
               code: resultRow[0]?.trim(), // Code
               name: resultRow[1]?.trim(), // Name
               speed: resultRow[2]?.trim(), // Speed
+              dna: resultRow[4]?.trim(), // dna
               life: resultRow[5]?.trim(), // Life
               atk1p: resultRow[8]?.trim(), // atk1p
               atk2p: resultRow[10]?.trim(), // atk2p
@@ -59,7 +61,8 @@ function searchCSV() {
             document.querySelector('input[name="Level"]').disabled = true
             document.querySelector('input[name="Specimen"]').disabled = true
 
-            document.getElementById('new-search-btn').style.display = 'inline-block'
+            document.getElementById('new-search-btn').style.display =
+              'inline-block'
 
             // Extraemos y procesamos la información del Specimen
             let dna = extractedData.code.split('Specimen_')[1]
@@ -95,12 +98,13 @@ function searchCSV() {
             }
 
             if (noVersionTypes.includes(extractedData.type)) {
-              starsDropdown.value = 'basic'; // Seleccionamos la opción "No Stars" por defecto
+              starsDropdown.value = 'basic' // Seleccionamos la opción "No Stars" por defecto
             }
 
             // Funciones
             calclevel()
             calcLife()
+            getGeneImages(extractedData.dna)
             calcatkp()
             calcspeed()
           } else {
@@ -117,28 +121,24 @@ function searchCSV() {
 
 function resetSearch() {
   // Desbloquear los campos para permitir nuevas modificaciones
-  document.querySelector('input[name="Level"]').disabled = false;
-  document.querySelector('input[name="Specimen"]').disabled = false;
-  document.getElementById('stars').disabled = false;
+  document.querySelector('input[name="Level"]').disabled = false
+  document.querySelector('input[name="Specimen"]').disabled = false
+  document.getElementById('stars').disabled = false
 
   // Limpiar los campos y resultados previos
-  document.querySelector('input[name="Level"]').value = '';
-  document.querySelector('input[name="Specimen"]').value = '';
-  document.querySelector('input[name="Mutant"]').value = '';
-  document.getElementById('stars').value = 'basic';  // Resetear a "No Stars"
-  document.getElementById('stars').style.display = 'none';
-  document.getElementById('results').innerHTML = '';  // Limpiar los resultados
+  document.querySelector('input[name="Level"]').value = ''
+  document.querySelector('input[name="Specimen"]').value = ''
+  document.querySelector('input[name="Mutant"]').value = ''
+  document.getElementById('stars').value = 'basic' // Resetear a "No Stars"
+  document.getElementById('stars').style.display = 'none'
+  document.getElementById('results').innerHTML = '' // Limpiar los resultados
 
   // Ocultar el botón de nueva búsqueda y volver a mostrar los campos
-  document.getElementById('new-search-btn').style.display = 'none';
+  document.getElementById('new-search-btn').style.display = 'none'
 }
 
 // Luego, en el evento del botón "Nueva búsqueda", solo llamas a la función
-document
-  .getElementById('new-search-btn')
-  .addEventListener('click', resetSearch);
-
-
+document.getElementById('new-search-btn').addEventListener('click', resetSearch)
 
 function calcspeed() {
   if (extractedData.speed) {
@@ -146,12 +146,14 @@ function calcspeed() {
     stats.speed = 10 / (speed / 100)
     //console.log('Speed:', stats.speed)
     let contspeed = `
-      <img src="${iconstats.speed}" alt="Speed Icon" style="width: 30px; height: 30px; margin-right: 10px;">
+      <img src="${
+        iconstats.speed
+      }" alt="Speed Icon" style="width: 30px; height: 30px; margin-right: 10px;">
       ${stats.speed.toFixed(2)}
-    `;
+    `
 
     // Actualiza el HTML con el contenido generado
-    document.getElementById('speedf').innerHTML = contspeed;
+    document.getElementById('speedf').innerHTML = contspeed
   } else {
     console.log('Not found')
   }
@@ -214,12 +216,41 @@ function calcLife() {
     console.log('Life Calculado:', stats.life) // Puedes imprimirlo para ver el resultado en consola
 
     let conthp = `
-    <img src="${iconstats.hp}" alt="Hp Icon" style="width: 30px; height: 30px; margin-right: 10px;">
+    <img src="${
+      iconstats.hp
+    }" alt="Hp Icon" style="width: 30px; height: 30px; margin-right: 10px;">
     ${stats.life.toFixed(0)}
-  `;
+  `
     document.getElementById('calculatedLife').innerHTML = conthp
   } else {
     console.error('No se encontró el valor de vida en extractedData.')
+  }
+}
+
+/*  let geneValue = extractedData.dna
+
+  for (let i = 0; i < geneValue.length; i++) {
+    const caracter = geneValue[i];  // Extraer el carácter
+
+    // Crear un elemento de imagen
+    const img = document.createElement('img');
+
+    // Establecer la fuente de la imagen usando el objeto gene
+    img.src = gene[caracter];  // Obtener la URL de la imagen desde el objeto gene
+    img.alt = `Imagen de ${caracter}`;
+}*/
+
+// Función para obtener imágenes de genes
+function getGeneImages(inputdna) {
+  if (!inputdna) return { gene1: gene.all, gene2: gene.all }
+
+  let chars = inputdna.split('') // Separa la cadena en caracteres
+  let gene1 = chars[0] || 'all' // Primer carácter
+  let gene2 = chars[1] || 'all' // Segundo carácter
+
+  return {
+    gene1: gene[gene1] || gene['all'],
+    gene2: gene[gene2] || gene['all'],
   }
 }
 
@@ -227,31 +258,32 @@ function calcatkp() {
   if (extractedData.atk1p && extractedData.atk2p) {
     let input1 = extractedData.atk1p
     let input2 = extractedData.atk2p
-    
-    // Utilizamos split y comprobamos si existe texto después del ":"
-    let value1 = input1.split(':')[0].trim()  // Obtenemos solo el número
-    let value2 = input2.split(':')[0].trim()  // Obtenemos solo el número
-    
-    // Parseamos los valores a float
+
+    let value1 = input1.split(':')[0].trim() // Obtenemos solo el número
+    let value2 = input2.split(':')[0].trim() // Obtenemos solo el número
+
     let atk1pi = parseFloat(value1)
     let atk2pi = parseFloat(value2)
 
     let abi = parseFloat(extractedData.ability)
 
-    //console.log(value1, value2) // Imprime los valores numéricos obtenidos
-
-    // Realizamos los cálculos con los valores numéricos
     stats.atk1p = (atk1pi * bonusstars * levelF * adjust) / 1000000
     stats.atk2p = (atk2pi * bonusstars * levelF * adjust) / 1000000
 
-    stats.ability = (stats.atk1p*(100 + abi)/100).toFixed(0)
+    stats.ability = ((stats.atk1p * (100 + abi)) / 100).toFixed(0)
 
-    console.log('Atak1p:', stats.atk1p) // Imprime el resultado del cálculo de atk1p
-    console.log('Atak2p:', stats.atk2p) // Imprime el resultado del cálculo de atk2p
-    
-    // Muestra el resultado en el HTML
-    document.getElementById('calculatedatk').innerHTML =
-      'atk1p: ' + stats.atk1p.toFixed(0) + '&nbsp;' + 'ability: ' + stats.ability + '<br>' + 'atk2p: ' + stats.atk2p.toFixed(0)
+    let genes = getGeneImages(extractedData.dna)
+    document.getElementById('calculatedatk').innerHTML = `
+  <div>
+    <img src="${genes.gene1}" alt="Gene1" width="30"> 
+    <span>atk1p: ${stats.atk1p.toFixed(0)}</span>
+    <br>
+    <span>ability: ${stats.ability}</span>
+    <br>
+    <img src="${genes.gene2}" alt="Gene2" width="30"> 
+    <span>atk2p: ${stats.atk2p.toFixed(0)}</span>
+  </div>
+`
   } else {
     console.error('No data of atk1p or atk2p.')
   }

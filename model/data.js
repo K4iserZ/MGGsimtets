@@ -39,4 +39,5 @@ let gene = {
   D : 'https://s-ak.kobojo.com/mutants/assets/mobile/hud/fight_ui/gene_d.png',
   E : 'https://s-ak.kobojo.com/mutants/assets/mobile/hud/fight_ui/gene_e.png',
   F : 'https://s-ak.kobojo.com/mutants/assets/mobile/hud/fight_ui/gene_f.png',
+  all : 'https://s-ak.kobojo.com/mutants/assets/mobile/hud/fight_ui/gene_all.png',
 }
