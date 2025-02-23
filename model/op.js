@@ -270,7 +270,7 @@ function calcatkp() {
     stats.atk1p = (atk1pi * bonusstars * levelF * adjust) / 1000000
     stats.atk2p = (atk2pi * bonusstars * levelF * adjust) / 1000000
 
-    stats.ability = ((stats.atk1p * (100 + abi)) / 100).toFixed(0)
+    stats.ability = Math.abs(((stats.atk1p / 100) * abi).toFixed(0))
 
     let genes = getGeneImages(extractedData.dna)
     document.getElementById('calculatedatk').innerHTML = `

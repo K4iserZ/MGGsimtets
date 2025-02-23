@@ -499,7 +499,7 @@ Specimen_D_12; Howlosaurus;300;20; D;2158;60; 485:AOE; 828:AOE;844;1360;42;" 1:1
 Specimen_E_12; Sidereal Explorer;220;20; E;1803;60; 527:AOE; 791:AOE; 542:AOE; 811:AOE;42;" 1:1:e;2:5:neutre;1p:10:e;2p:15:neutre"; LEGEND; E_12x[A-F][A-F]_*+E_12x[A-F]_*;" 1:ability_strengthen;2:ability_strengthen_plus";15;30;" n;n;s"
 Specimen_F_12; Summoner;120;20; F;1590;60;477;722;488;738;42;" 1:1:f;2:5:neutre;1p:10:f;2p:15:neutre"; LEGEND; F_12x[A-F][A-F]_*+F_12x[A-F]_*;" 1:ability_weaken;2:ability_weaken_plus";-15;-25;" n;n;s"
 Specimen_AA_13; TCB-8566 Trafficroid;170;20; AA;2054;60;755;1122; 544:AOE; 845:AOE;42;" 1:1:a;2:5:a;1p:10:a;2p:15:a"; LEGEND; AA_13x[A-F][A-F]_*+AA_13x[A-F]_*;" 1:ability_weaken;2:ability_weaken_plus";-20;-30;" n;n;s"
-Specimen_AB_13; No Name;200;20; AB;1130;60;312;468;312;468;42;" 1:1:a;2:5:b;2p:15:b;1p:10:a"; LEGEND; AB_13x[A-F][A-F]_*+AB_13x[A-F]_*;" 1:ability_shield;2:ability_shield_plus";20;30;" n;n;s"
+Specimen_AB_13;The Architect;225;20; AB;1911;60;1132;1911;1132;1911;42;"1:1:a;2:5:b;2p:15:b;1p:10:a";HEROIC;AB_13x[A-F][A-F]_*+AB_13x[A-F]_*;"1:ability_weaken;2:ability_weaken_plus";-25;-35;"n;n;n;s"
 Specimen_AC_13; Capsulator MTZ-004;270;0; AC;4356;60;1345;2024;1345;2024;42;" 1:1:a;2:5:c;2p:15:c;1p:10:a"; SEASONAL; ;" 1:ability_retaliate;2:ability_retaliate_plus";-15;-35;" n;n;s"
 Specimen_AD_13; Myrmidus.exe;210;20; AD;2323;60;876;1221;876;1221;42;" 1:1:a;2:5:d;2p:15:d;1p:10:a"; LEGEND; AD_13x[A-F][A-F]_*+AD_13x[A-F]_*;" 1:ability_regen;2:ability_regen_plus";27;45;" n;n;s"
 Specimen_AE_13; Helidrone KxT-271;105;20; AE;681;60;585;728;511; 511:AOE;42;" 1:1:a;2:5:e;2p:15:e;1p:10:a"; LEGEND; AE_13x[A-F][A-F]_*+AE_13x[A-F]_*;" 1:ability_weaken;2:ability_weaken_plus";-15;-20;" n;n;s"
