@@ -41,3 +41,15 @@ let gene = {
   F : 'https://s-ak.kobojo.com/mutants/assets/mobile/hud/fight_ui/gene_f.png',
   all : 'https://s-ak.kobojo.com/mutants/assets/mobile/hud/fight_ui/gene_all.png',
 }
+
+let ability = {
+  weaken: 'ability_weaken.png',
+  strengthen: 'ability_strengthen.png',
+  retaliate: 'ability_retaliate.png',
+  regenerate: 'ability_regenerate.png',
+  slash: 'ability_slash.png',
+  life: 'ability_life.png',
+  shield: 'ability_shield.png',
+
+}
+let urlabi = 'https://s-ak.kobojo.com/mutants/assets/mobile/hud/icons/'
