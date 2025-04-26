@@ -91,3 +91,54 @@ function calcatkp() {
     console.error('No se encontraron los valores de atk1p y atk2p en extractedData.')
   }
 }
+
+function updateStarOptions(specimen) {
+  const starsDropdown = document.getElementById("stars");
+
+  // Limpiar opciones previas
+  starsDropdown.innerHTML = `
+    <option value="basic">No Stars</option>
+    <option value="bronze">Bronze</option>
+    <option value="silver">Silver</option>
+    <option value="gold">Gold</option>
+    <option value="platinum">Platinum</option>
+  `;
+
+  // Buscar en el archivo gacha.csv para añadir nuevas opciones
+  fetch('data/gacha.csv')
+    .then(response => response.text())
+    .then(data => {
+      Papa.parse(data, {
+        complete: function(results) {
+          const rows = results.data;
+
+          // Buscar todas las coincidencias del Specimen en el CSV
+          const uniqueOptions = new Set();
+
+          for (let i = 1; i < rows.length; i++) {
+            if (rows[i][0].includes(`Specimen_${specimen}`)) {
+              const optionName = rows[i][3]?.trim(); // Suponiendo que la versión esté en la columna 3
+              if (optionName) {
+                uniqueOptions.add(optionName);
+              }
+            }
+          }
+
+          // Agregar opciones únicas encontradas al combobox
+          uniqueOptions.forEach(option => {
+            const optionElement = document.createElement("option");
+            optionElement.value = option.toLowerCase();
+            optionElement.textContent = option;
+            starsDropdown.appendChild(optionElement);
+          });
+
+          // Mostrar el combobox actualizado
+          starsDropdown.style.display = "inline";
+        },
+        header: false,
+        skipEmptyLines: true,
+        delimiter: ';'
+      });
+    })
+    .catch(error => console.error('Error al leer el archivo gacha.csv:', error));
+}

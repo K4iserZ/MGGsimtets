@@ -1,0 +1,24 @@
+body {
+    margin: 20px; /* Márgenes generales en toda la página */
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+.container-mbody {
+    text-align: center;
+    align-content: center;
+    justify-content: center;
+    margin: 20px;
+}

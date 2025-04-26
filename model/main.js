@@ -74,6 +74,7 @@ function searchCSV() {
               calclevel();
               calcLife();
               calcspeed();
+              updateStarOptions(specimen); // Llama a la función para actualizar el combobox
             } else {
               resultsDiv.innerHTML = '<p>No se encontró el Specimen.</p>';
             }
